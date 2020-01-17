@@ -1,17 +1,68 @@
-.Quiz {
+.wrapper {
+    background: linear-gradient(20deg, #2884f6 0%, #5041b2 100%);
     display: flex;
-    justify-content: center;
-    padding-top: 100px;
     flex-grow: 1;
-    width: 100%;
-    background: linear-gradient(90deg, #5041b2 0%, #7969e6 100%);
+    justify-content: center;
+    color: white;
+    padding-top: 100px;
 }
 
-.Quiz h1 {
-    color: #ffffff;
-    margin-left: 10px;
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:200,400');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
 }
 
-.QuizWrapper {
-    width : 600px
+p, a {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Generic styles */
+:global html {
+    scroll-behavior: smooth;
+}
+
+.wrapper :global a {
+    background-color: goldenrod;
+    text-decoration: none;
+    color: white;
+    border-radius: .25rem;
+    text-align: center;
+    display: inline-block;
+    transition: all .3s;
+}
+
+a:hover {
+    opacity: .6;
+}
+
+/* Styles for the hero image */
+.hero {
+    /* Photo by mnm.all on Unsplash */
+    background: url('https://images.unsplash.com/photo-1518176258769-f227c798150e') center;
+    background-size: cover;
+    padding: 4rem 2rem;
+    /* grid styles */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: center;
+}
+
+.hero > * {
+    color: white;
+}
+
+.hero > h1 {
+    font-size: 4rem;
+    padding-bottom: 1rem;
+}
+
+.hero > article > p {
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+
+.hero > article > a {
+    padding: 1rem;
+    margin-top: .75rem;
 }

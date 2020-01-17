@@ -1,10 +1,14 @@
 import axios from "../../axios/azios-quiz"
-import {FETCH_QUIZES_START, FETCH_QUIZES_SUCCESS, FETCH_QUIZES_ERROR} from "./actionTypes"
+import {
+    FETCH_QUIZ_ERROR,
+    FETCH_QUIZ_START,
+    FETCH_QUIZ_SUCCESS
+} from "./actionTypes"
 
-export function fetchQuizes() {
+export function fetchQuiz() {
     return async dispatch => {
 
-        dispatch(fetchQuizesStart)
+        dispatch(fetchQuizStart)
 
         try {
             const data = await axios.get("/quizes.json")
@@ -18,11 +22,11 @@ export function fetchQuizes() {
                 })
             });
 
-            dispatch(fetchQuizesSuccess(quizes))
+            dispatch(fetchQuizSuccess(quizes))
 
             console.log(data.data)
         } catch (e) {
-            dispatch(fetchQuizesError(e))
+            dispatch(fetchQuizError(e))
 
         }
     }
@@ -31,20 +35,21 @@ export function fetchQuizes() {
 //ЭТО ТРИ ACTION CREATORA
 
 //МЫ ДИСПАТЧИМ ДАННЫЕ
-export function fetchQuizesStart() {
+
+export function fetchQuizStart() {
     return {
-        type : FETCH_QUIZES_START
+        type : FETCH_QUIZ_START
     }
 }
-export function fetchQuizesSuccess(quizes) {
+export function fetchQuizSuccess(quiz) {
     return {
-        type : FETCH_QUIZES_SUCCESS,
-        quizes
+        type : FETCH_QUIZ_SUCCESS,
+        quiz
     }
 }
-export function fetchQuizesError(e) {
+export function fetchQuizError(e) {
     return {
-        type : FETCH_QUIZES_ERROR,
+        type : FETCH_QUIZ_ERROR,
         error : e
     }
 }

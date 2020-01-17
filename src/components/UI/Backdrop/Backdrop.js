@@ -1,22 +1,13 @@
 import React from "react";
-import classes from './Button.css'
+import classes from './Backdrop.css'
 
-const Button = props => {
-    const cls = [
-        classes.Button,
-        classes[props.type],
+const Backdrop = props => {
 
-    ]
     return (
-        <button
-        onClick={props.onClick}
-        className={cls.join(' ')}
-        disabled={props.disabled}
+        <div className={classes.Backdrop} onClick={props.onClick}>
 
-        >{
-            props.children
-        }</button>
+        </div>
     )
 }
 
-export default Button;
+export default Backdrop;

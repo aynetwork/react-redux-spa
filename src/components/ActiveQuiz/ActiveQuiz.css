@@ -1,13 +1,14 @@
-.Quiz {
-    display: flex;
-    justify-content: center;
-    padding-top: 100px;
-    flex-grow: 1;
-    width: 100%;
-    background: linear-gradient(90deg, #5041b2 0%, #7969e6 100%);
+.ActiveQuiz {
+    padding: 20px;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    margin: 0 10px;
+    box-sizing: border-box;
 }
 
-.Quiz h1 {
-    color: #ffffff;
-    margin-left: 10px;
+
+.Question {
+    display: flex;
+    justify-content: space-between;
 }

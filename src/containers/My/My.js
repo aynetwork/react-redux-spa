@@ -1,77 +1,34 @@
 import React, {Component} from 'react'
-import classes from './Quiz.css'
-import ActiveQuiz from "../../components/ActiveQuiz/ActiveQuiz";
-import FinishedQuiz from "../../components/FinizhedQuiz/FinishedQuiz";
-import axios from "../../axios/azios-quiz"
-import Loader from "../../components/UI/Loader/Loader";
-
-
+import './My.css'
 import {connect} from "react-redux";
-import {fetchQuizById, quizAnswerClick, retryHandler} from "../../store/actions/quiz";
+import {changeName} from "../../store/actions/my";
 
-class Quiz extends Component {
-
-
-    async componentDidMount() {
-        console.log(this.props)
-        this.props.fetchQuizById(this.props.match.params.id)
-    }
-    componentWillUnmount() {
-        this.props.retryHandler()
-    }
-
+class My extends Component {
     render() {
-        console.log(this.props)
         return (
-            <div className={classes.Quiz}>
-                <div className={classes.QuizWrapper}>
-                    <h1>Quiz</h1>
+            <main className={"wrapper"}>
+                <section className={"hero"}></section>
+                <article>
+                    <p>Explore local breweries with just one click and stirred by starlight across the centuries light years great turbulent clouds circumnavigated paroxysm of global death.</p>
+                    <a href="#breweries">Browse Breweries</a>
 
-                    {this.props.loading || !this.props.quiz ? <Loader/> :
-
-                        this.props.isFinished ?
-                                <FinishedQuiz
-                                    onRetry={this.props.retryHandler}
-                                    results={this.props.results}
-                                    quiz={this.props.quiz}
-                                /> :
-                                <ActiveQuiz
-                                    quiz={this.props.quiz[this.props.activeQuestion]}
-                                    onAnswerClick={this.props.onAnswerClickhandler}
-                                    quizLength={this.props.quiz.length}
-                                    answerNumber={this.props.activeQuestion + 1}
-                                    state={this.props.answerState}
-                                />
-
-
-                    }
-
-
-                </div>
-
-            </div>
+                </article>
+            </main>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        activeQuestion : state.quiz.activeQuestion,
-        answerState : state.quiz.answerState,
-        loading : state.quiz.loading,
-        results : state.quiz.results, // {[]}
-        isFinished : state.quiz.isFinished,
-        quiz : state.quiz.quiz
+        my: state.my.name
     }
 
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchQuizById : val=>dispatch(fetchQuizById(val)),
-        onAnswerClickhandler : val=>dispatch(quizAnswerClick(val)),
-        retryHandler : ()=>dispatch(retryHandler()),
+        changeName: () => dispatch(changeName())
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
+export default connect(mapStateToProps, mapDispatchToProps)(My);
